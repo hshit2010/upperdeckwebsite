@@ -1,0 +1,3163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu — UPPERDECK | A Multi Cuisine Restaurant</title>
+    <meta
+      name="description"
+      content="Explore the full UPPERDECK menu — Soups, Tandoor, Chinese, Handi, Pizza, Pasta, Desserts, Beverages and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap"
+      rel="stylesheet" />
+    <style>
+      /* ── TOKENS (matches the homepage palette exactly) ── */
+      :root {
+        --gold: #d4af37;
+        --gold-light: #e8c96a;
+        --emerald: #0f2e2e;
+        --emerald-mid: #1a4040;
+        --black: #080c0c;
+        --charcoal: #111818;
+        --card: #141f1f;
+        --white: #f8f4ec;
+        --muted: #b0a88a;
+        --border: rgba(212, 175, 55, 0.18);
+        --green-veg: #6dbe6d;
+        --red-nonveg: #e06060;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "Josefin Sans", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: var(--sans);
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--gold);
+        color: var(--black);
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 2px;
+      }
+
+      /* ── NAV ── */
+      .mnav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 0 5vw;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(8, 12, 12, 0.96);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+      }
+      .mnav-logo {
+        font-family: var(--serif);
+        font-size: 1.7rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+        text-decoration: none;
+      }
+      .mnav-logo span {
+        font-style: italic;
+        font-weight: 300;
+      }
+      .mnav-back {
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0.5rem 1.2rem;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        text-decoration: none;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .mnav-back:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .mnav-back svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+      .mnav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      /* ── HERO BANNER ── */
+      .menu-hero {
+        padding: 140px 5vw 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+      .menu-hero::before {
+        content: "MENU";
+        position: absolute;
+        font-family: var(--serif);
+        font-size: 22vw;
+        font-weight: 600;
+        color: rgba(212, 175, 55, 0.03);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        pointer-events: none;
+        letter-spacing: 0.1em;
+      }
+      .menu-hero-badge {
+        display: inline-block;
+        font-size: 0.58rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid var(--border);
+        padding: 0.38rem 1.1rem;
+        margin-bottom: 1.6rem;
+      }
+      .menu-hero-title {
+        font-family: var(--serif);
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+      .menu-hero-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .menu-hero-sub {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2.5rem;
+      }
+      .menu-hero-sub span {
+        color: var(--gold);
+        margin: 0 0.6rem;
+      }
+
+      /* ── ACTION BUTTONS ── */
+      .menu-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .btn-gold {
+        font-family: var(--sans);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 0.85rem 2.2rem;
+        background: var(--gold);
+        color: var(--black);
+        text-decoration: none;
+        font-weight: 400;
+        transition: all 0.3s;
+        cursor: pointer;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-gold:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      .btn-outline-gold {
+        font-family: var(--sans);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 0.85rem 2.2rem;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        background: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-outline-gold:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+      .btn-gold svg,
+      .btn-outline-gold svg {
+        width: 15px;
+        height: 15px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+
+      /* ── STICKY CATEGORY NAV ── */
+      .cat-nav {
+        position: sticky;
+        top: 72px;
+        z-index: 800;
+        background: var(--charcoal);
+        border-bottom: 1px solid var(--border);
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .cat-nav::-webkit-scrollbar {
+        height: 2px;
+      }
+      .cat-nav::-webkit-scrollbar-thumb {
+        background: var(--gold);
+      }
+      .cat-nav-inner {
+        display: inline-flex;
+        gap: 0;
+        padding: 0;
+      }
+      .cat-btn {
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0.75rem 1.4rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: var(--muted);
+        transition: all 0.28s;
+        font-family: var(--sans);
+        border-right: 1px solid var(--border);
+        white-space: nowrap;
+      }
+      .cat-btn:last-child {
+        border-right: none;
+      }
+      .cat-btn:hover,
+      .cat-btn.active {
+        background: var(--gold);
+        color: var(--black);
+      }
+
+      /* ── MAIN LAYOUT ── */
+      .menu-page {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 4rem 5vw 6rem;
+      }
+
+      /* ── CATEGORY BLOCK ── */
+      .menu-cat {
+        margin-bottom: 5rem;
+        scroll-margin-top: 140px;
+      }
+      .cat-header {
+        display: flex;
+        align-items: flex-end;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .cat-title {
+        font-family: var(--serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+        font-weight: 300;
+        line-height: 1.1;
+      }
+      .cat-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .cat-sub {
+        font-size: 0.58rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        padding: 0.28rem 0.7rem;
+        border: 1px solid var(--border);
+        margin-bottom: 0.35rem;
+      }
+      .cat-count {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      /* ── SUB-SECTION (Veg / Non-Veg) ── */
+      .sub-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+        padding: 0.3rem 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .sub-label.veg {
+        color: var(--green-veg);
+        border: 1px solid rgba(109, 190, 109, 0.25);
+        background: rgba(109, 190, 109, 0.05);
+      }
+      .sub-label.nonveg {
+        color: var(--red-nonveg);
+        border: 1px solid rgba(224, 96, 96, 0.25);
+        background: rgba(224, 96, 96, 0.05);
+      }
+      .sub-label::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .sub-label.veg::before {
+        background: var(--green-veg);
+      }
+      .sub-label.nonveg::before {
+        background: var(--red-nonveg);
+      }
+
+      /* ── DISH GRID ── */
+      .dish-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 1.5px;
+        background: var(--border);
+        margin-bottom: 2rem;
+      }
+      .dish-card {
+        background: var(--charcoal);
+        padding: 1.6rem 1.8rem;
+        transition: background 0.28s;
+        position: relative;
+        overflow: hidden;
+      }
+      .dish-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--gold);
+        transform: scaleY(0);
+        transition: transform 0.3s;
+        transform-origin: bottom;
+      }
+      .dish-card:hover::before {
+        transform: scaleY(1);
+      }
+      .dish-card:hover {
+        background: var(--card);
+      }
+      .dish-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .dish-name {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.25;
+        flex: 1;
+      }
+      .dish-price {
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--gold);
+        white-space: nowrap;
+        font-weight: 400;
+        flex-shrink: 0;
+      }
+      .dish-desc {
+        font-size: 0.65rem;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .dish-badge {
+        display: inline-block;
+        font-size: 0.48rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.55rem;
+        border-radius: 1px;
+        margin-top: 0.65rem;
+      }
+      .dish-badge.veg {
+        border: 1px solid rgba(109, 190, 109, 0.3);
+        color: var(--green-veg);
+      }
+      .dish-badge.nonveg {
+        border: 1px solid rgba(224, 96, 96, 0.3);
+        color: var(--red-nonveg);
+      }
+      .dish-badge.both {
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      /* ── NOTE BOX ── */
+      .menu-note {
+        background: rgba(212, 175, 55, 0.05);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--gold);
+        padding: 1rem 1.4rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        font-style: italic;
+      }
+
+      /* ── BACK TO TOP ── */
+      .back-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 700;
+        background: var(--gold);
+        color: var(--black);
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.35s;
+      }
+      .back-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .back-top:hover {
+        background: var(--gold-light);
+      }
+
+      /* ── PDF VIEWER OVERLAY ── */
+      .pdf-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .pdf-overlay.show {
+        display: flex;
+      }
+      .pdf-container {
+        width: 90%;
+        height: 90%;
+        position: relative;
+        background: #111;
+      }
+      .pdf-container iframe {
+        width: 100%;
+        height: 100%;
+      }
+      .close-pdf {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+
+      /* ── FOOTER ── */
+      .menu-footer {
+        background: var(--charcoal);
+        border-top: 1px solid var(--border);
+        padding: 3rem 5vw;
+        text-align: center;
+      }
+      .menu-footer p {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+      .menu-footer a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+      .menu-footer a:hover {
+        color: var(--gold-light);
+      }
+      .menu-footer-logo {
+        font-family: var(--serif);
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 700px) {
+        .dish-grid {
+          grid-template-columns: 1fr;
+        }
+        .cat-header {
+          flex-wrap: wrap;
+        }
+        .cat-count {
+          margin-left: 0;
+        }
+        .menu-hero-title {
+          font-size: 2.2rem;
+        }
+        .menu-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+        .mnav-right {
+          gap: 0.5rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .cat-btn {
+          font-size: 0.55rem;
+          padding: 0.65rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══ NAV ═══ -->
+    <nav class="mnav" id="mnav">
+      <a class="mnav-logo" href="index (7).html">UPPER<span>DECK</span></a>
+      <div class="mnav-right">
+        <a class="mnav-back" href="index (7).html">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M12.5 5l-5 5 5 5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none" />
+          </svg>
+          Back to Home
+        </a>
+        <a class="btn-gold preview-pdf" href="#" id="navViewPdf">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M4 4h8l4 4v8H4V4z"
+              stroke="currentColor"
+              stroke-width="1.4"
+              fill="none"
+              stroke-linejoin="round" />
+            <path
+              d="M12 4v4h4"
+              stroke="currentColor"
+              stroke-width="1.4"
+              fill="none"
+              stroke-linejoin="round" />
+            <path
+              d="M7 11h6M7 14h4"
+              stroke="currentColor"
+              stroke-width="1.4"
+              stroke-linecap="round" />
+          </svg>
+          View PDF
+        </a>
+        <a
+          class="btn-outline-gold"
+          href="single side page for mail2.pdf"
+          download>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M10 3v10M6 9l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none" />
+            <path
+              d="M3 16h14"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+          Download
+        </a>
+      </div>
+    </nav>
+
+    <!-- ═══ HERO BANNER ═══ -->
+    <div class="menu-hero">
+      <div class="menu-hero-badge">
+        A Multi Cuisine Restaurant · Panipat, Haryana
+      </div>
+      <h1 class="menu-hero-title">Our <em>Complete</em> Menu</h1>
+      <p class="menu-hero-sub">
+        Indian<span>·</span>Chinese<span>·</span>Continental<span>·</span>Desserts<span>·</span>Beverages
+      </p>
+      <div class="menu-actions">
+        <button class="btn-gold preview-pdf" id="heroViewPdf">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M4 4h8l4 4v8H4V4z"
+              stroke="currentColor"
+              stroke-width="1.4"
+              fill="none"
+              stroke-linejoin="round" />
+            <path
+              d="M12 4v4h4"
+              stroke="currentColor"
+              stroke-width="1.4"
+              fill="none"
+              stroke-linejoin="round" />
+          </svg>
+          View Menu PDF
+        </button>
+        <a
+          class="btn-outline-gold"
+          href="single side page for mail2.pdf"
+          download>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M10 3v10M6 9l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none" />
+            <path
+              d="M3 16h14"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+          Download PDF
+        </a>
+        <a class="btn-outline-gold" href="index (7).html#booking">
+          Book a Table
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ STICKY CATEGORY NAV ═══ -->
+    <div class="cat-nav" id="catNav">
+      <div class="cat-nav-inner">
+        <button class="cat-btn active" data-target="soups">Soups</button>
+        <button class="cat-btn" data-target="tandoor">Tandoore Se</button>
+        <button class="cat-btn" data-target="chinese-starters">
+          Chinese Starters
+        </button>
+        <button class="cat-btn" data-target="handi">Handi Se</button>
+        <button class="cat-btn" data-target="chinese-main">Chinese Main</button>
+        <button class="cat-btn" data-target="rice-noodles">
+          Rice &amp; Noodles
+        </button>
+        <button class="cat-btn" data-target="roti-chawal">
+          Roti &amp; Chawal
+        </button>
+        <button class="cat-btn" data-target="salad">Salad &amp; Raita</button>
+        <button class="cat-btn" data-target="pizza">Pizza</button>
+        <button class="cat-btn" data-target="european">Continental</button>
+        <button class="cat-btn" data-target="sandwiches">Sandwiches</button>
+        <button class="cat-btn" data-target="healthy">Healthy Diets</button>
+        <button class="cat-btn" data-target="desserts">Desserts</button>
+        <button class="cat-btn" data-target="beverages">Beverages</button>
+        <button class="cat-btn" data-target="shakes">Shakes</button>
+        <button class="cat-btn" data-target="drinks">
+          Drinks &amp; Desserts
+        </button>
+        <button class="cat-btn" data-target="coffee">Coffee &amp; Tea</button>
+      </div>
+    </div>
+
+    <!-- ═══ MENU CONTENT ═══ -->
+    <div class="menu-page">
+      <!-- ─── SOUPS ─── -->
+      <div class="menu-cat" id="soups">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Starters</div>
+            <h2 class="cat-title">Soups</h2>
+          </div>
+          <span class="cat-count">13 items</span>
+        </div>
+
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cream of Tomato</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              A hearty puree of fresh seasoned tomatoes done with homemade
+              mother's recipe
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Roasted Tomato Basil Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              This tomato basil soup recipe is full of flavour!!!
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Lemon Coriander Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">A clear soup with lemon and coriander</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Manchow Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              A moderately spiced thick Soup with chopped Mushroom, Vegetables,
+              Ginger &amp; Chilli
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Sweet Corn Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">The famous soup with corn</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Hot &amp; Sour Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              A combination of spicy and sour with mushroom and vegetable
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Clear Soup</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">A clear steamed Soup with vegetables</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cream of Chicken</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Soup made from chicken, simmered with various other ingredients
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Man Chow Soup</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">A moderately spiced thick soup with chicken</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Hot &amp; Sour Soup</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Moderately spicy &amp; sour chicken stock thickened with Chinese
+              veggies &amp; chicken
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Sweet Corn Soup</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">The famous soup with chicken</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Clear Soup</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">A clear steamed soup with chicken</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Talumien Soup</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Slice of fresh vegetable and chicken with noodles topping
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TANDOORE SE ─── -->
+      <div class="menu-cat" id="tandoor">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Grilled &amp; Smoked</div>
+            <h2 class="cat-title">Tandoore <em>Se</em></h2>
+          </div>
+          <span class="cat-count">22 items</span>
+        </div>
+
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Shashlik</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">All times favourite</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Achari Paneer Tikka</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Paneer cubes flavoured with mustard &amp; cooked with a pickle
+              spiced marination
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Harrey Masaley Ka Bhuna Paneer</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Picante of Paneer, wrapped in a coriander, mint, curry leaf -
+              enriched multi flour batter &amp; grilled on charcoal
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Sabz Shahi Seekh Kebab</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Mince of assorted vegetables coated with cashew nut &amp; grilled
+              to perfection
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Dum Key Khumb</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Fresh mushrooms blended with Lucknowi spices and cooked in clay
+              oven
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Dahi Kebab</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Delicacy of house-hung curd marinated with Indian spices
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Royal Hara Bhara Kebab</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Spinach flavour patties stuffed with cheese and dry fruits
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoori Soya Chap</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Soya chap marinated with chef's secret spices
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Afghani Malai Chap</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Lightly spicy up soya chaps in cream marination
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Haryali Soya Chap</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Soya chap in mint and coriander chutney marinated overnight,
+              grilled in clay oven
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Atishe Aloo</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Scooped potatoes stuffed with root vegetable in clay oven
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoor Ki Bahaar (Veg Platter)</span
+              ><span class="dish-price">₹ 399</span>
+            </div>
+            <p class="dish-desc">
+              An assorted tandoori platter from vegetarian choice of kebab
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoori Fish Tikka</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">Barbecued fish in tangy spice &amp; yogurt</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Amritsari Fish</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">An Amritsari delight of fried fish</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoori Murg Frontier</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Chicken grilled in traditional frontier style
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Afghani</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Tender pieces of chicken, marinate in cream, curd spices &amp;
+              Bar-Be-Que in clay oven
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Badami Murg-Tangri</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Skewered chicken drumsticks marinated overnight in yogurt and
+              Peshawari Spices
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Kali Mirch Tikka</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Gently marinated chicken kebab flavoured with crushed pepper
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Malai Tikka</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Smooth marinade of yoghurt, cheese &amp; cream, fit for a king
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Tikka Lehsuni</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Boneless chicken chunks in hung curd marinated with fresh garlic
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Shikhampuri Reshmi Seekh</span
+              ><span class="dish-price">₹ 429</span>
+            </div>
+            <p class="dish-desc">
+              Chicken mince flavoured with garlic, chillies &amp; coriander
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoor Ki Bahaar (Non-Veg Platter)</span
+              ><span class="dish-price">₹ 529</span>
+            </div>
+            <p class="dish-desc">
+              An assorted tandoori platter from non-vegetarian choice of kebab
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CHINESE STARTERS ─── -->
+      <div class="menu-cat" id="chinese-starters">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Asian Fusion</div>
+            <h2 class="cat-title">Chinese <em>Starters</em></h2>
+          </div>
+          <span class="cat-count">21 items</span>
+        </div>
+
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Vegetable Spring Roll</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Mixed vegetable wrapped in flour skin and golden fried
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Crispy Chilli Chana</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Chickpeas fried and tossed with onions and pepper
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fried Baby Corn Hot Garlic</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Crispy baby corn tossed in medium spiced chilli garlic sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Corn Salt 'n' Pepper</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Crispy fried corn tossed with onion &amp; mulled pepper
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Crispy Veg. Salt 'n' Pepper</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Battered fried vegetable with onion and mulled pepper
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Manchurian</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Vegetable dumpling cooked in Manchurian sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Crispy Chilli Broccoli 'n' Cauliflower</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Tempura fried crispy broccoli &amp; cauliflower florets tossed in
+              chilli garlic sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Paneer</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Cubes of cottage cheese battered fried tossed with onion and bell
+              pepper
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Mushroom</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Crispy fried mushrooms finish in chilli sauce with vegetables
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Crispy Honey Potato</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <p class="dish-desc">
+              Crispy potatoes tossed in chilli sauce with ting of honey topped
+              with seismic seeds
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg Dim Sums</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Thin wrap stuffed with mix veggies and served with hot garlic
+              sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Dim Sums</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Thin wrap stuffed with paneer and served with hot garlic sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chinese Platter (Veg)</span
+              ><span class="dish-price">₹ 399</span>
+            </div>
+            <p class="dish-desc">An assortment of Chinese starters</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Garlic Fish</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">
+              Slice of the crisp bettered fried fish slices with veggies
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Lemon Fish</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">Crisply fried tossed in lemon sauce</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Honey Glazed Chilli Chicken</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <p class="dish-desc">An age old favourite</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken-65</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <p class="dish-desc">
+              Dice of chicken bettered fried &amp; tossed with curry leaves and
+              mustard Seeds
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Manchurian</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <p class="dish-desc">
+              Chicken Manchurian is flavourful mix of veggies, chicken &amp; soy
+              sauce
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Salt 'n' Pepper</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <p class="dish-desc">
+              Shallow fried chicken strips tossed with chopped Shallots and
+              black pepper
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Drums of Heaven</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <p class="dish-desc">
+              Deep-fried chicken wings tossed in sweet &amp; spicy sauce
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Chicken Dim Sums</span
+              ><span class="dish-price">₹ 299</span>
+            </div>
+            <p class="dish-desc">
+              Thin wrap stuffed with chicken and served with hot garlic sauce
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chinese Platter (Non-Veg)</span
+              ><span class="dish-price">₹ 499</span>
+            </div>
+            <p class="dish-desc">An assortment of Chinese starters</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── HANDI SE ─── -->
+      <div class="menu-cat" id="handi">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Indian Curries</div>
+            <h2 class="cat-title">Handi <em>Se</em></h2>
+          </div>
+          <span class="cat-count">29 items</span>
+        </div>
+
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Kadhai Paneer</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Cottage cheese cooked in spicy Kadhai masala flavoured with
+              capsicum and coriander seed
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Tikka Masala</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Char grilled cottage cheese cooked with roasted vegetable in spicy
+              gravy
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Butter Masala</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Cubes of cottage cheese in creamy &amp; mildly sweet tomato gravy
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Palak Paneer</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Cubes of cottage cheese cooked in spinach puree and topped with
+              cream &amp; butter
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tawa Paneer Masala</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Paneer cooked in rich spicy gravy, garnish with fresh onion rings
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Kali Mirch</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Cubes of cottage cheese in mild cashew gravy, sprinkled with
+              crushed pepper
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Shahi Paneer</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Cottage cheese cooked in Shahi gravy made of cashew nut
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Zafrani Malai Kofta</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Dumplings made of cottage cheese stuffed with dry fruits, Simmered
+              in saffron flavoured royal gravy
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Methi Matter Malai</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Trio vegetables simmered in mild cashew gravy with ting of
+              fenugreek
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Khumb Do Pyaza</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">A delicacy of mushroom from our chef</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Khumb Hara Pyaza</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Fresh mushrooms with spring onion cooked with home grounded spices
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Haryali Makai</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">Combination of whole corn &amp; spinach</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tawa Soya Chap</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">Fresh soya bean chap in chopped masala</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Soya Chap Butter Masala</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Soya chap cooked in rich tomato butter gravy and cream
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Sabz Jalfrezi</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">All-time favourite</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Bhindi Do Pyaza (Seasonal)</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">
+              Chopped lady finger with double quantity of onion
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pindi Chana</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              A tangy tribute to chick peas cooked with fresh herbs and spices
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Dal Makhani</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">All times favourite</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Yellow Dal Tadka</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">Yellow dal prepared in home style</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Yellow Dal Palak</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Home style combination of yellow lentil &amp; spinach
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Dal Panchmael</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Panchratan dal is a simple and nutritious fusion of five different
+              types of protein rich dals
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fish Curry</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">Boneless fish chunks simmered in curry</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fish Tikka Masala</span
+              ><span class="dish-price">₹ 549</span>
+            </div>
+            <p class="dish-desc">
+              Char grilled fish tikka in spicy tangy masala
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Tikka Masala</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">
+              Great Britain's national dish, made in India
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Makhani</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">All-time favourite</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Kadhai</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">
+              Chicken cooks with capsicum and onion in Kadhai masala
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Tari Wala</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">
+              Home style curry chicken, spiced with selected herbs
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Do Pyaza</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">
+              This Delicious aromatic chicken &amp; Onion curry has wonderful
+              depth of flavour
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tawa Murg Masala</span
+              ><span class="dish-price">₹ 479</span>
+            </div>
+            <p class="dish-desc">
+              Tandoori chicken pieces are cooked in spicy gravy and homemade
+              garam masala powder
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Egg Curry</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">Egg cooked in thin and homemade curry</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CHINESE MAIN COURSE ─── -->
+      <div class="menu-cat" id="chinese-main">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Asian</div>
+            <h2 class="cat-title">Chinese <em>Main Course</em></h2>
+          </div>
+          <span class="cat-count">15 items</span>
+        </div>
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Stir Fry Vegetables in Black Bean Sauce</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Vegetables in Red/Green Curry with Steamed Rice</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Mushroom, Baby Corn &amp; Broccoli with Hot Garlic Sauce</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Crispy Vegetable in Schezwan Sauce</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Stir Fried Mushroom and Broccoli, Hong Kong Style</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Vegetable Manchurian</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Sauté Veg Soy Sauce</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Paneer Gravy</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Chicken in Red/Green Curry with Steamed Rice</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken in Spicy Black Bean Sauce</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Dice Chicken Garlic Sauce</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Shredded Chicken in Hot Garlic Sauce</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Hong-Kong</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Manchurian</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Chicken Gravy</span
+              ><span class="dish-price">₹ 379</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RICE / NOODLES ─── -->
+      <div class="menu-cat" id="rice-noodles">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Asian</div>
+            <h2 class="cat-title">Rice &amp; <em>Noodles</em></h2>
+          </div>
+          <span class="cat-count">8 items</span>
+        </div>
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Singapore Fried Rice</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Fried Rice</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Chilli Fried Rice</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Hakka Noodles</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg. Chilli Garlic Noodles</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Singapore Fried Rice</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Fried Rice</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Hakka Noodle</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── ROTIYON KI BAHAAR / CHAWAL ─── -->
+      <div class="menu-cat" id="roti-chawal">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Indian Breads &amp; Rice</div>
+            <h2 class="cat-title">
+              Rotiyon Ki Bahaar &amp; <em>Chawal Ka Khazana</em>
+            </h2>
+          </div>
+          <span class="cat-count">16 items</span>
+        </div>
+        <div class="menu-note">
+          We cook &amp; serve Biryanis in traditional clay pot — A must try for
+          everyone!!!
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tandoori Roti</span
+              ><span class="dish-price">₹ 29</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Hari Mirch Ki Roti</span
+              ><span class="dish-price">₹ 39</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Butter Roti</span
+              ><span class="dish-price">₹ 39</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Missi Roti</span
+              ><span class="dish-price">₹ 49</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Paratha (Lachha / Pudiana / Lal Mirch)</span
+              ><span class="dish-price">₹ 59</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Naan</span
+              ><span class="dish-price">₹ 39</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Butter Naan</span
+              ><span class="dish-price">₹ 69</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Garlic Naan</span
+              ><span class="dish-price">₹ 79</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Kulcha (Aloo / Onion / Paneer)</span
+              ><span class="dish-price">₹ 89</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Bread Basket</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">
+              Tandoori Roti, Lachha Parantha, Missi Roti &amp; Butter Naan
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Subz Pulao</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Jeera Rice</span
+              ><span class="dish-price">₹ 199</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Matter Pulao</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Steamed Rice</span
+              ><span class="dish-price">₹ 199</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg Dum Biryani</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">Served with Raita</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Murg Dum Biryani</span
+              ><span class="dish-price">₹ 389</span>
+            </div>
+            <p class="dish-desc">Served with Raita</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SALAD / RAITA ─── -->
+      <div class="menu-cat" id="salad">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Accompaniments</div>
+            <h2 class="cat-title">
+              Khane Ke Saath — <em>Salad &amp; Raita</em>
+            </h2>
+          </div>
+          <span class="cat-count">10 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Butter Corn Salad</span
+              ><span class="dish-price">₹ 119</span>
+            </div>
+            <p class="dish-desc">
+              Corn kernel tossed in butter with vinaigrette
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Kuchumber Salad</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <p class="dish-desc">
+              Fine cubes of fresh salad vegetable flavoured with herbs and
+              accented with lemon juice
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Aloo Chat Salad</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <p class="dish-desc">
+              Fried potatoes mixed with onion, chilli, coriander and Spiced with
+              Chat masala
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Hara Bhara Salad</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <p class="dish-desc">
+              Slices of onion, tomato, cucumber, radish &amp; carrot
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Mix Raita</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Boondi Raita</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cucumber Raita</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pineapple Raita</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Papad (Roasted/Fry) — 2 Pcs.</span
+              ><span class="dish-price">₹ 49</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Masala Papad (Roasted/Fry)</span
+              ><span class="dish-price">₹ 79</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PIZZA ─── -->
+      <div class="menu-cat" id="pizza">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">House Specialty</div>
+            <h2 class="cat-title">Thin Crust <em>House Pizza</em></h2>
+          </div>
+          <span class="cat-count">11 items</span>
+        </div>
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Classic Margherita</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">A classic Cheese Pizza</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veggie Crunch</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">Mushroom, Corn, Olives &amp; jalapeño</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Spicy Paneer Tikka</span
+              ><span class="dish-price">₹ 289</span>
+            </div>
+            <p class="dish-desc">Tandoori Paneer with Onions and Bell Pepper</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pizza Veg Paradise</span
+              ><span class="dish-price">₹ 279</span>
+            </div>
+            <p class="dish-desc">
+              Spinach, Tomatoes, Garlic, Black Olives and Jalapeños
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pizza Farm House</span
+              ><span class="dish-price">₹ 299</span>
+            </div>
+            <p class="dish-desc">
+              Onions, Capsicum, Tomatoes, &amp; Mozzarella Cheese
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Upper Deck Special Veg Pizza</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">Exotic Vegetables with fresh basil</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Zesty Chicken</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">
+              Chunks of Chicken, Onion, Capsicum and Mushroom
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Bar Be Que Chicken Pizza</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">
+              Grilled Chicken, Jalapeños slices, Tomatoes, Mushroom
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Tikka Delight</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">Chicken Tikka, Onions &amp; Jalapeños</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Peri-Peri Chicken Pizza</span
+              ><span class="dish-price">₹ 369</span>
+            </div>
+            <p class="dish-desc">
+              Seasoned Chicken, Tomatoes, sliced Onions topped with Peri-Peri
+              Sauce
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Upper Deck Special Non-Veg Pizza</span
+              ><span class="dish-price">₹ 399</span>
+            </div>
+            <p class="dish-desc">
+              Grilled Chicken &amp; Vegetables topped with fresh basil
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── EUROPEAN PAN GRILLED ─── -->
+      <div class="menu-cat" id="european">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Continental</div>
+            <h2 class="cat-title">European <em>Pan Grilled</em></h2>
+          </div>
+          <span class="cat-count">9 items</span>
+        </div>
+        <div class="sub-label veg">Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Create Your Own Pasta</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              Choice of Pasta — Spaghetti, Fusilli, Penne. Choice of Sauce —
+              Tomato (Arrabiata), Creamy Cheese Sauce, Pesto Sauce. Served with
+              Herbed Bread
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Spinach &amp; Mushroom Cannelloni</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              Pasta Sheet Stuffed with Spinach and Mushroom Topped with Chesse
+              &amp; Baked
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Mac N Cheese</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              This pasta dish is made with a gooey homemade sauce of butter,
+              milk and melted cheese
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Vegetable Au Gratin</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              English Vegetable Cooked in White Sauce and Baked with Mozzarella
+              Chees
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+        <div class="sub-label nonveg">Non-Vegetarian</div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Spaghetti Marinara</span
+              ><span class="dish-price">₹ 299</span>
+            </div>
+            <p class="dish-desc">
+              Spaghetti cooked with Tomato Basil sauce with sliced chicken,
+              served with garlic bread
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Grilled Chicken with Bar-Be-Que Sauce</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">Served with Butter vegetables and fries</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Peri-Peri Chicken Wings</span
+              ><span class="dish-price">₹ 349</span>
+            </div>
+            <p class="dish-desc">A hot and spicy delicacy from our Chef</p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Steak with Rosemary Sauce</span
+              ><span class="dish-price">₹ 399</span>
+            </div>
+            <p class="dish-desc">
+              Served on sizzler with Jacket Potato on bed of vegetables
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chicken Salami Sandwich</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              Chicken salami, Iceberg salad, cheese slice with French fries
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SANDWICHES ─── -->
+      <div class="menu-cat" id="sandwiches">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Breads &amp; Bites</div>
+            <h2 class="cat-title">Breads / Sandwiches / <em>Panini</em></h2>
+          </div>
+          <span class="cat-count">15 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">French Fries</span
+              ><span class="dish-price">₹ 119 / 139</span>
+            </div>
+            <p class="dish-desc">Salted / Peri-Peri / Cheesy</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg Nuggets</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">Served with Thousand Island Sauce</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Loaded Nachos</span
+              ><span class="dish-price">₹ 149</span>
+            </div>
+            <p class="dish-desc">
+              Nachos topped with olives and cheese served salsa sauce
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Garlic Bread</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">Toasted Garlic Bread</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Garlic Bread with Cheese</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">Bread Topped with Garlic Butter and cheese</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chilli Cheese Toast</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Crispy Garlic Toast topped with chilli and cheese
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Grilled Sandwich</span
+              ><span class="dish-price">₹ 149</span>
+            </div>
+            <p class="dish-desc">
+              Fresh cottage cheese, tomatoes and cheese slice with French Fries
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Veg Grilled Sandwich</span
+              ><span class="dish-price">₹ 149</span>
+            </div>
+            <p class="dish-desc">
+              Cucumber, bell pepper, tomatoes and onion and cheese slice with
+              French Fries
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Spinach and Corn Sandwich</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">
+              Spinach, Sweet Corn, Cheese slice with French fries
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Paneer Tikka Sliders</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Burger stuffed with Paneer Tikka, Filled with grilled Capsicum,
+              Tomato &amp; Onion
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Italian Tomato Bruschetta</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Garlic Bread topped with fresh Ripened Tomatoes, fresh Basil,
+              Garlic, Olive Oil
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Club Sandwich</span
+              ><span class="dish-price">₹ 249</span>
+            </div>
+            <p class="dish-desc">
+              Chicken, Fried Egg, cucumber, Tomato, Iceberg, cheese slice with
+              French Fries
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Hand Pulled Chicken Tikka Panini</span
+              ><span class="dish-price">₹ 269</span>
+            </div>
+            <p class="dish-desc">
+              Succulent chicken Tikka, Tomatoes, Vine grade Onions coated with
+              our special chutney
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── HEALTHY DIETS ─── -->
+      <div class="menu-cat" id="healthy">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Nutrition First</div>
+            <h2 class="cat-title">Healthy <em>Diets</em></h2>
+          </div>
+          <span class="cat-count">8 items</span>
+        </div>
+        <div class="menu-note">
+          Add a Glass of Protein Shake to your order @ ₹149
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Caesar Salad</span
+              ><span class="dish-price">₹ 189 / 229</span>
+            </div>
+            <p class="dish-desc">
+              Fresh romaine lettuce topped with croutons &amp; Caesar dressing
+              (Veg/Non-Veg)
+            </p>
+            <span class="dish-badge both">Veg / Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chipotle Paneer / Chicken Salad</span
+              ><span class="dish-price">₹ 189 / 229</span>
+            </div>
+            <p class="dish-desc">
+              Tender roasted chicken breast or Paneer, salad greens, sweet bell
+              peppers, black olives, onions, honey Dijon-Mustard dressing
+            </p>
+            <span class="dish-badge both">Veg / Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Quinoa &amp; Grilled Veggies Salad</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <p class="dish-desc">
+              Golden quinoa, salad greens, mushroom, sweet bell peppers,
+              broccoli, zucchini, lemon vinaigrette
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Falafel Platter</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <p class="dish-desc">Falafel served veggie greens and Hummus</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Sauté Vegetables</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <p class="dish-desc">
+              Broccoli, Carrot, Cauliflower, Beans, Baby corn
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Protein All In</span
+              ><span class="dish-price">₹ 229</span>
+            </div>
+            <p class="dish-desc">
+              Grilled Chicken &amp; Broccoli on bed of Lettuce
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Egg Bowl</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">
+              A combination of Poached Egg and Boiled Egg with Butter Vegetables
+            </p>
+            <span class="dish-badge nonveg">🔴 Non-Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── DESSERTS ─── -->
+      <div class="menu-cat" id="desserts">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Sweet Endings</div>
+            <h2 class="cat-title"><em>Desserts</em></h2>
+          </div>
+          <span class="cat-count">10 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Gulab Jamun (2 Pcs.)</span
+              ><span class="dish-price">₹ 79</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Gulab Jamun with Ice Cream</span
+              ><span class="dish-price">₹ 119</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Moong Dal Halwa</span
+              ><span class="dish-price">₹ 119</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Gajar Ka Halwa (Seasonal)</span
+              ><span class="dish-price">₹ 119</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Ice-Cream</span
+              ><span class="dish-price">₹ 109</span>
+            </div>
+            <p class="dish-desc">
+              Vanilla / Strawberry / Butter Scotch / Chocolate
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cassata</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Tutti Frutti</span
+              ><span class="dish-price">₹ 149</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name"
+                >Devil's Chocolate Cake with Ice Cream</span
+              ><span class="dish-price">₹ 179</span>
+            </div>
+            <p class="dish-desc">Brownie topped with vanilla ice cream</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chocolate Sundae</span
+              ><span class="dish-price">₹ 179</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fresh n Fruity Sundae</span
+              ><span class="dish-price">₹ 179</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── BEVERAGES ─── -->
+      <div class="menu-cat" id="beverages">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Soft Beverages</div>
+            <h2 class="cat-title">Mocktails &amp; <em>Beverages</em></h2>
+          </div>
+          <span class="cat-count">13 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fruit Punch</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">Mixed fruit juice with vanilla ice cream</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Hawaiian Punch</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              Pineapple Juice with Coconut Milk blended with Orange Juice and
+              Ice
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Mint Mojito</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              Muddled lemon chunk, brown sugar, mint &amp; crushed ice topped
+              with sprite
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Watermelon Mojito</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              Watermelon chunks muddled with fresh mint &amp; lemon in lemonade
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Blue Lagoon</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">Sprite with blue curacao syrup</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cool-Cool Strawberry</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              Strawberry crush with lemon juice with crushed ice
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Citrus Freeze</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <p class="dish-desc">
+              Cranberry juice &amp; Orange juice blended together with lemon
+              juice &amp; crushed ice
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Cold Coffee with Ice Cream</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Ice Tea (Lemon / Peach)</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Diet Coke</span
+              ><span class="dish-price">₹ 89</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Fresh Lime (Soda / Water)</span
+              ><span class="dish-price">₹ 79</span>
+            </div>
+            <p class="dish-desc">Sweet / Salted / Mixed</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Aerated Drink</span
+              ><span class="dish-price">₹ 59</span>
+            </div>
+            <p class="dish-desc">Cola / Orange / Lemonade</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Packaged Drinking Water</span
+              ><span class="dish-price">MRP</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── THICK SHAKES ─── -->
+      <div class="menu-cat" id="shakes">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Indulgent Sips</div>
+            <h2 class="cat-title">Thick Shakes &amp; <em>Smoothies</em></h2>
+          </div>
+          <span class="cat-count">11 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Banana Caramel Shake</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Caramelized banana whipped with vanilla ice cream
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Chikoo Shake</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Ripen chikoo mixed with cocoa powder and chocolate chips
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Snowy Vanilla</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Vanilla Ice cream topped with milk and essence, blended till
+              smooth
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pink Strawberry</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Scoop of Strawberry Ice cream &amp; pulp, blended with full cream
+              milk with crushed Ice
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Kit-Kat Shake</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Famous Kit Kat Biscuits crushed with milk &amp; combination of
+              vanilla-chocolate Ice cream
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Oreo Shake</span
+              ><span class="dish-price">₹ 169</span>
+            </div>
+            <p class="dish-desc">
+              Need no description, Everyone's favorite Shake
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Brownie Cake Shake</span
+              ><span class="dish-price">₹ 179</span>
+            </div>
+            <p class="dish-desc">
+              Walnut brownie with fresh walnuts blended with chocolate syrup
+              &amp; Ice cream, topped with crushed brownie
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Banana Oat Smoothie</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">Banana, Oats, Yogurt, Milk</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Mocha Protein Smoothie</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">
+              Banana, Walnuts, Cocoa Powder, Chocolate Protein Powder, Soya Milk
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Pineapple Passion Smoothie</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">Pineapple, Yoghurt, Honey</p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Milk &amp; Honey Smoothie</span
+              ><span class="dish-price">₹ 189</span>
+            </div>
+            <p class="dish-desc">
+              Full cream Milk, Green Grapes, Celery, Honey
+            </p>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── COFFEE & TEA ─── -->
+      <div class="menu-cat" id="coffee">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Warm &amp; Fuzzy</div>
+            <h2 class="cat-title">Coffee &amp; <em>Tea</em></h2>
+          </div>
+          <span class="cat-count">10 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Café Espresso</span
+              ><span class="dish-price">₹ 69</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Café Cappuccino</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Café Latte</span
+              ><span class="dish-price">₹ 99</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Café Mocha</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Café Americano</span
+              ><span class="dish-price">₹ 109</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Hot Chocolate</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Iced Latte</span
+              ><span class="dish-price">₹ 139</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Masala Tea</span
+              ><span class="dish-price">₹ 69</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Herbal Tea</span
+              ><span class="dish-price">₹ 69</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+          <div class="dish-card">
+            <div class="dish-top">
+              <span class="dish-name">Green Tea</span
+              ><span class="dish-price">₹ 69</span>
+            </div>
+            <span class="dish-badge veg">🟢 Veg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── DRINKS & DESSERTS ─── -->
+      <div class="menu-cat" id="drinks">
+        <div class="cat-header">
+          <div>
+            <div class="cat-sub">Sips &amp; Sweet Treats</div>
+            <h2 class="cat-title">Drinks &amp; <em>Desserts</em></h2>
+          </div>
+          <span class="cat-count">5 items</span>
+        </div>
+        <div class="dish-grid">
+          <div class="dish-card drinks-item">
+            <div class="dish-top">
+              <span class="dish-name">Banana Caramel Shake</span
+              ><span class="dish-price">₹169</span>
+            </div>
+            <p class="dish-desc">
+              Caramelised banana whipped with vanilla ice cream.
+            </p>
+            <div class="dish-badge veg">Shake</div>
+          </div>
+
+          <div class="dish-card drinks-item">
+            <div class="dish-top">
+              <span class="dish-name">Kit-Kat Shake</span
+              ><span class="dish-price">₹169</span>
+            </div>
+            <p class="dish-desc">
+              Famous Kit Kat biscuits crushed with vanilla chocolate ice cream.
+            </p>
+            <div class="dish-badge veg">Shake</div>
+          </div>
+
+          <div class="dish-card drinks-item">
+            <div class="dish-top">
+              <span class="dish-name">Cold Coffee with Ice Cream</span
+              ><span class="dish-price">₹169</span>
+            </div>
+            <p class="dish-desc">Premium cold coffee blended with ice cream.</p>
+            <div class="dish-badge veg">Beverage</div>
+          </div>
+
+          <div class="dish-card drinks-item">
+            <div class="dish-top">
+              <span class="dish-name">Chocolate Sundae</span
+              ><span class="dish-price">₹179</span>
+            </div>
+            <p class="dish-desc">Rich chocolate dessert with ice cream.</p>
+            <div class="dish-badge veg">Dessert</div>
+          </div>
+
+          <div class="dish-card drinks-item">
+            <div class="dish-top">
+              <span class="dish-name">Tutti Frutti</span
+              ><span class="dish-price">₹149</span>
+            </div>
+            <p class="dish-desc">
+              Ice cream dessert loaded with fruity flavours.
+            </p>
+            <div class="dish-badge veg">Dessert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /menu-page -->
+
+    <!-- ═══ FOOTER ═══ -->
+    <div class="menu-footer">
+      <span class="menu-footer-logo">UPPERDECK</span>
+      <p>A Multi Cuisine Restaurant · Panipat, Haryana</p>
+      <p style="margin-top: 0.4rem">
+        All prices in ₹ &nbsp;·&nbsp; Taxes as applicable &nbsp;·&nbsp; Subject
+        to availability
+      </p>
+      <p style="margin-top: 0.8rem">
+        <a href="index (7).html#booking">Book a Table</a> &nbsp;·&nbsp;
+        <a href="tel:+919876543210">+91 98765 43210</a> &nbsp;·&nbsp;
+        <a href="https://instagram.com/upperdeckofficial/" target="_blank"
+          >@upperdeckofficial</a
+        >
+      </p>
+    </div>
+
+    <!-- Back to top -->
+    <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+    <!-- ═══ PDF OVERLAY ═══ -->
+    <div class="pdf-overlay" id="pdfOverlay">
+      <div class="pdf-container">
+        <button class="close-pdf" id="closePdf" aria-label="Close PDF viewer">
+          ×
+        </button>
+        <iframe
+          id="pdfFrame"
+          title="UPPERDECK Menu PDF"
+          loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+
+      /* ── CATEGORY NAV: active state on scroll ── */
+      const catBtns = document.querySelectorAll(".cat-btn");
+      const menuCats = document.querySelectorAll(".menu-cat");
+
+      catBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = document.getElementById(btn.dataset.target);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          catBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+
+      // Highlight active category on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const id = e.target.id;
+              catBtns.forEach((b) => {
+                b.classList.toggle("active", b.dataset.target === id);
+              });
+              // Scroll active btn into view in the nav
+              const active = document.querySelector(".cat-btn.active");
+              if (active)
+                active.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "center",
+                });
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
+      );
+
+      menuCats.forEach((cat) => observer.observe(cat));
+
+      /* ── BACK TO TOP ── */
+      const backTop = document.getElementById("backTop");
+      window.addEventListener(
+        "scroll",
+        () => {
+          backTop.classList.toggle("visible", window.scrollY > 500);
+        },
+        { passive: true },
+      );
+      backTop.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      /* ── PDF OVERLAY ── */
+      const pdfOverlay = document.getElementById("pdfOverlay");
+      const closePdf = document.getElementById("closePdf");
+      const pdfFrame = document.getElementById("pdfFrame");
+
+      document.querySelectorAll(".preview-pdf").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          pdfFrame.src = "single side page for mail2.pdf";
+          pdfOverlay.classList.add("show");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      closePdf.addEventListener("click", () => {
+        pdfOverlay.classList.remove("show");
+        document.body.style.overflow = "";
+        setTimeout(() => {
+          pdfFrame.src = "";
+        }, 400);
+      });
+
+      pdfOverlay.addEventListener("click", (e) => {
+        if (e.target === pdfOverlay) {
+          pdfOverlay.classList.remove("show");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            pdfFrame.src = "";
+          }, 400);
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          pdfOverlay.classList.remove("show");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            pdfFrame.src = "";
+          }, 400);
+        }
+      });
+    </script>
+  </body>
+</html>
